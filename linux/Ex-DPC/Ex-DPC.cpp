@@ -36,7 +36,7 @@ void computation_local_density() {
 			std::uniform_real_distribution<> rnd(0, 0.9999);
 
 			dataset_pt[i].local_density = (kdtree.radiusSearch(dataset_pt[i], cutoff)).size();
-			dataset_pt[i].local_density += rnd(mt);
+			// dataset_pt[i].local_density += rnd(mt);
 		}
 	}
 
@@ -186,6 +186,7 @@ int main() {
 
 	std::cout << " ---------\n";
 	std::cout << " data id: " << dataset_id << "\n";
+	std::cout << " cardinality: " << dataset_pt.size() << "\n";
 	std::cout << " dimensionality: " << dimensionality << "\n";
 	std::cout << " sampling rate: " << sampling_rate << "\n";
 	std::cout << " cutoff-distance: " << cutoff << "\n";
@@ -196,8 +197,10 @@ int main() {
 	// local density computation
 	computation_local_density();
 
+
 	// dependency check & cluster center identification
 	computation_dependency();
+	output_density();
 
 	// cluster assignment
 	computation_label_propagation();
@@ -206,7 +209,7 @@ int main() {
 	//output_cpu_time();
 
 	// output label
-	//output_label();
+	// output_label();
 	//output_coord_label();
 
 	return 0;

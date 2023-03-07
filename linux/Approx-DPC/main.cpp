@@ -85,7 +85,7 @@ void local_density_computation_small() {
 				// local density computation
 				dataset_pt[i].result = kdtree.radiusSearch(point_set[i], cutoff);
 				dataset_pt[i].local_density = dataset_pt[i].result.size();
-				dataset_pt[i].local_density += rnd(mt);
+				// dataset_pt[i].local_density += rnd(mt);
 
 				point_set[i].local_density = dataset_pt[i].local_density;
 			}
@@ -285,6 +285,7 @@ int main() {
 
 	// local density computation for large cells
 	local_density_computation_large();
+	output_density();
 
 	// dependent point computation
 	dependent_point_computation();

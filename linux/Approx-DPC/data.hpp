@@ -1,5 +1,7 @@
-#include "/mnt/d/_external_lib/spatial_2.1.8/src/idle_point_multiset.hpp"
-#include "/mnt/d/_external_lib/spatial_2.1.8/src/bits/spatial_neighbor.hpp"
+// #include "/mnt/d/_external_lib/spatial_2.1.8/src/idle_point_multiset.hpp"
+// #include "/mnt/d/_external_lib/spatial_2.1.8/src/bits/spatial_neighbor.hpp"
+#include "idle_point_multiset.hpp"
+#include "bits/spatial_neighbor.hpp"
 #include <random>
 #include <array>
 #include <unordered_set>
@@ -292,7 +294,7 @@ public:
 					if (dist < cutoff) ++dataset_pt[point_id_set[i]].local_density;
 				}
 			}
-			dataset_pt[point_id_set[i]].local_density += rnd(mt);
+			// dataset_pt[point_id_set[i]].local_density += rnd(mt);
 			point_set[point_id_set[i]].local_density = dataset_pt[point_id_set[i]].local_density;
 
 			// id_max update

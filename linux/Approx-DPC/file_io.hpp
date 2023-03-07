@@ -199,6 +199,23 @@ void output_cpu_time() {
 	file.close();
 }
 
+// output density
+void output_density() {
+
+	std::string f_name = "result/density-id(" + std::to_string(dataset_id) + ")_sampling_rate(" + std::to_string(sampling_rate) + ")_cutoff(" + std::to_string(cutoff) + ")_core_no(" + std::to_string(core_no) + ")_approx.txt";
+	std::ofstream file;
+	file.open(f_name.c_str(), std::ios::out);
+
+	if (file.fail()) {
+		std::cerr << " cannot open the output file." << std::endl;
+		file.clear();
+		return;
+	}
+	for (unsigned int i = 0; i < dataset_pt.size(); ++i) file << dataset_pt[i].id << "\t" << dataset_pt[i].local_density << "\n";
+
+	file.close();
+}
+
 // rand index computation
 void compute_rand_index() {
 

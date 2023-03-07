@@ -202,6 +202,35 @@ void output_label() {
 	file.close();
 }
 
+// output density
+void output_density() {
+
+	std::string f_name = "result/" + directory_comp() + "/Label/density(" + std::to_string(dataset_id) + ")_sampling_rate(" + std::to_string(sampling_rate) + ")_cutoff(" + std::to_string(cutoff) + ").txt";
+	std::ofstream file;
+	file.open(f_name.c_str(), std::ios::out);
+
+	if (file.fail()) {
+		std::cerr << " cannot open the output file." << std::endl;
+		file.clear();
+		return;
+	}
+
+struct less_than_key
+{
+    inline bool operator() (const pt& struct1, const pt& struct2)
+    {
+        return (struct1.id < struct2.id);
+    }
+};
+
+
+std::sort(dataset_pt.begin(), dataset_pt.end(), less_than_key());
+
+	for (unsigned int i = 0; i < dataset_pt.size(); ++i) file << dataset_pt[i].id << "\t" << dataset_pt[i].local_density << "\n";
+
+	file.close();
+}
+
 // output label with coordinate
 void output_coord_label() {
 
